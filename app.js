@@ -11,11 +11,13 @@ fetch("data.json")
 
 function createComments(data) {
   const container = document.querySelector(".container");
-  const currentUser = document.createElement("div");
+  const users = document.createElement("div");
 
-  //append
-  container.appendChild(currentUser);
+  for (let i = 0; i < data.length; i++) {
+    //append
+    container.appendChild(users);
 
-  //set
-  currentUser.innerHTML = data[0].username;
+    //set
+    users.innerHTML = data[0].username;
+  }
 }
