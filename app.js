@@ -14,38 +14,48 @@ function createComments(data) {
 
   for (let i = 0; i < data.length; i++) {
     const currentUser = document.createElement("div");
-    const users = document.createElement("div");
+    const otherUsers = document.createElement("div");
     const comment = document.createElement("textarea");
     const profile = document.createElement("div");
     const profileImg = document.createElement("img");
     const sendBtn = document.createElement("button");
     const holder = document.createElement("div");
+    const otherComments = document.createElement("div");
+    const otherProfile = document.createElement("img");
 
-    //other users
-    for (let j = 0; j < data[i].comments.length; j++) {
-      console.log(data[j]);
-    }
+    //other otherUsers
 
     //append
     container.appendChild(currentUser);
-    container.appendChild(users);
+    container.appendChild(otherUsers);
     currentUser.appendChild(holder);
     holder.appendChild(profile);
     holder.appendChild(comment);
     profile.appendChild(profileImg);
     currentUser.appendChild(sendBtn);
+    otherUsers.appendChild(otherComments);
+    otherComments.appendChild(otherProfile);
 
     //set
     profileImg.src = data[i].currentUser.image;
+
+    console.log(data[i].comments);
     sendBtn.innerHTML = "send";
     comment.placeholder = "Add a comment...";
 
     //adding classname
     currentUser.classList.add("current-user");
-    users.classList.add("users");
+    otherUsers.classList.add("other-users");
     sendBtn.classList.add("send-btn");
     holder.classList.add("holder");
     comment.classList.add("input");
     profile.classList.add("profile");
+    otherUsers.classList.add("other-users");
+    otherComments.classList.add("other-comments");
+
+    for (let j = 0; j < data[i].comments.length; j++) {
+      otherProfile.src = data[j].comments.image;
+      console.log(data[j]);
+    }
   }
 }
